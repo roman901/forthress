@@ -1,0 +1,39 @@
+( : is_prime dup 1 swap 2 do if drop cr dup r@ % else then loop if ." number is prime " cr else ." number is complex " cr then ; IMMEDIATE )
+( : is_prime 
+dup 2 
+.S
+do 
+." in st loop " cr .S ." !!! " cr
+if
+.S dup .S r@ .S % .S 
+." after div " cr .S
+if 
+    drop 
+else ( )
+then 
+else ( )
+then
+loop 
+if ." number is prime " cr else ." number is complex " cr then ; IMMEDIATE )
+: is_prime 
+dup 1 < 
+if 
+    ." can not check value " cr exit 
+else 
+then 
+dup 1 = 
+if 
+    ." value is prime and complex at the same time " cr exit 
+else 
+then 
+dup dup 2 
+do
+dup r@ % not
+if
+    ." value is complex " cr exit exit
+else
+    drop
+then
+loop
+." value is prime " cr
+; IMMEDIATE
